@@ -1,63 +1,8 @@
-char server[] = {"192.168.11.100"} ; //Enter the IPv4 address or webhost address
+char server[] = {"192.168.11.100"} ; //DB Server Address
 // FUNCTION FOR SENDING DATA TO SERVER
 
 
-/************************************
- * Watchdog Function
- ************************************/
-void heartbeat() {
-  // Sink current to drain charge from watchdog circuit
-  pinMode(pulsePin, OUTPUT);
-  digitalWrite(pulsePin, LOW);
-  delay(500);
-  // Return to high-Z
-  pinMode(pulsePin, INPUT);
-  lastHeartbeat = millis();
-  Serial.println("Heartbeat sent");
-}
-void hbtime(){
-  unsigned long uptime = millis();
-  if ((uptime - lastUptimeReport) >= 5000) {
-    // It has been at least 5 seconds since our last uptime report.  
-    Serial.println("Uptime: " + String((uptime - (uptime % 5000)) / 1000) + " seconds (" + String((uptime - lastHeartbeat) / 1000) + " seconds since last heartbeat)");
-    // Pretend we did it exactly on the 5 second mark so we don't start slipping.
-    lastUptimeReport = (uptime - (uptime % 5000));
-  }
-}
-
-
-/************************************
- RTC Time Checking 
- ************************************/
-void rtctime(){
-  float dt;
-  float tm;
-  DateTime now = rtc.now();
-  // add time from RTC here
-  Serial.print("&D=");
-  Serial.print(now.year(),DEC);
-  
-  Serial.print(now.month(),DEC);
-  
-  Serial.println(now.day(),DEC);
-  Serial.print("&T=");
-  Serial.print(now.hour(),DEC);
-  
-  Serial.print(now.minute(),DEC);
-  
-  Serial.println(now.second(),DEC); 
-  
-  }
-
-
-
-
-
-
-
-
 boolean datasend() {
-    DateTime now = rtc.now();
     EthernetClient UECSclient;
     boolean statusReply = false;
     boolean requested = false;
@@ -67,17 +12,7 @@ boolean datasend() {
     if(UECSclient.connect(server, 80)) {
         Serial.print(" ~ ");
         //request http in line
-        UECSclient.print("GET /agri/api.php?api=uecs_data");
-        UECSclient.print("&key=");
-        UECSclient.print("BsJPaOcXLAiZ8aSqBj1cMNjjD8PuCWDE");
-        UECSclient.print("&dt=");
-        UECSclient.print(now.year(),DEC);
-        UECSclient.print(now.month(),DEC);
-        UECSclient.print(now.day(),DEC);
-        UECSclient.print("&tm=");
-        UECSclient.print(now.hour(),DEC);
-        UECSclient.print(now.minute(),DEC);
-        UECSclient.print(now.second(),DEC);
+        UECSclient.print("GET /api/data.php?api=uecs_data");
         UECSclient.print("&ch0=");
         UECSclient.print((double)U_ccmList[CCMID_InAirTemp].value/10, 1);
         UECSclient.print("&ch1=");
