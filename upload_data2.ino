@@ -1,4 +1,3 @@
-//char server[] = {"192.168.1.129"} ; //DB Server Address
 // FUNCTION FOR SENDING DATA TO SERVER
 
 
