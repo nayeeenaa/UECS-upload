@@ -12,9 +12,9 @@ boolean datasend() {
     Serial.print("Connection Established");
     
     Serial.print("GET /api/data.php?temperature=");
-    UECSclient.println("GET /api/data.php?temperature=50.5");     //YOUR URL
-    //Serial.println(U_ccmList[CCMID_InAirTemp].value);
-    //UECSclient.print((double)U_ccmList[CCMID_InAirTemp].value/10, 1);
+    UECSclient.print("GET /api/data.php?temperature=");     //YOUR URL
+    Serial.println(U_ccmList[CCMID_InAirTemp].value);
+    UECSclient.println((double)U_ccmList[CCMID_InAirTemp].value/10, 1);
     UECSclient.print(" ");      //SPACE BEFORE HTTP/1.1
     UECSclient.print("HTTP/1.1");
     UECSclient.println();
