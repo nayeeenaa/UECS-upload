@@ -1,3 +1,4 @@
+//char server[] = {"192.168.1.129"} ; //DB Server Address
 // FUNCTION FOR SENDING DATA TO SERVER
 
 
@@ -10,10 +11,17 @@ boolean datasend() {
     Serial.print(" ~ ");
     Serial.print("Connection Established");
     
-    Serial.print("GET /api/data.php?temperature=");
+    Serial.print("temperature=");
+    Serial.println((double)U_ccmList[CCMID_InAirTemp].value/10,1);
     UECSclient.print("GET /api/data.php?temperature=");     //YOUR URL
-    Serial.println(U_ccmList[CCMID_InAirTemp].value);
     UECSclient.println((double)U_ccmList[CCMID_InAirTemp].value/10, 1);
+
+    Serial.print("humidity=");
+    Serial.println((double)U_ccmList[CCMID_InAirHumid].value/10,1);
+    UECSclient.print("&humidity=");     
+    UECSclient.println((double)U_ccmList[CCMID_InAirHumid].value/10, 1);
+
+    
     UECSclient.print(" ");      //SPACE BEFORE HTTP/1.1
     UECSclient.print("HTTP/1.1");
     UECSclient.println();
