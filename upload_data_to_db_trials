@@ -24,8 +24,68 @@ boolean datasend() {
     Serial.print("HD=");
     Serial.println((double)U_ccmList[CCMID_InAirHD].value/100,2);
     UECSclient.print("&HD=");     
-    UECSclient.println((double)U_ccmList[CCMID_InAirHD].value/100, 2);
+    UECSclient.print((double)U_ccmList[CCMID_InAirHD].value/100, 2);
 
+    Serial.print("&Temperature_Room=");
+    Serial.println(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_ROOM]);
+    UECSclient.print("&Temperature_Room=");
+    UECSclient.print(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_ROOM]);
+
+    Serial.print("&Temperature_Region=");
+    Serial.println(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_REGI]);
+    UECSclient.print("&Temperature_Region=");
+    UECSclient.print(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_REGI]);
+
+    Serial.print("&Temperature_Order=");
+    Serial.println(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_ORDE]);
+    UECSclient.print("&Temperature_Order=");
+    UECSclient.print(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_ORDE]);
+
+    Serial.print("&Temperature_Priority=");
+    Serial.println(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_PRIO]);
+    UECSclient.print("&Temperature_Priority=");
+    UECSclient.print(U_ccmList[CCMID_InAirTemp].baseAttribute[AT_PRIO]);
+
+
+    Serial.print("&Humidity_Room=");
+    Serial.println(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_ROOM]);
+    UECSclient.print("&Humidity_Room=");
+    UECSclient.print(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_ROOM]);
+
+    Serial.print("&Humidity_Region=");
+    Serial.println(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_REGI]);
+    UECSclient.print("&Humidity_Region=");
+    UECSclient.print(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_REGI]);
+
+    Serial.print("&Humidity_Order=");
+    Serial.println(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_ORDE]);
+    UECSclient.print("&Humidity_Order=");
+    UECSclient.print(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_ORDE]);
+
+    Serial.print("&Humidity_Priority=");
+    Serial.println(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_PRIO]);
+    UECSclient.print("&Humidity_Priority=");
+    UECSclient.print(U_ccmList[CCMID_InAirHumid].baseAttribute[AT_PRIO]);
+
+    Serial.print("&HD_Room=");
+    Serial.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_ROOM]);
+    UECSclient.print("&HD_Room=");
+    UECSclient.print(U_ccmList[CCMID_InAirHD].baseAttribute[AT_ROOM]);
+
+    Serial.print("&HD_Region=");
+    Serial.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_REGI]);
+    UECSclient.print("&HD_Region=");
+    UECSclient.print(U_ccmList[CCMID_InAirHD].baseAttribute[AT_REGI]);
+
+    Serial.print("&HD_Order=");
+    Serial.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_ORDE]);
+    UECSclient.print("&HD_Order=");
+    UECSclient.print(U_ccmList[CCMID_InAirHD].baseAttribute[AT_ORDE]);
+
+    Serial.print("&HD_Priority=");
+    Serial.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_PRIO]);
+    UECSclient.print("&HD_Priority=");
+    UECSclient.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_PRIO]);
 
     
     UECSclient.print(" ");      //SPACE BEFORE HTTP/1.1
