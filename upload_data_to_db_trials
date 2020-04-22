@@ -13,7 +13,7 @@ boolean datasend() {
     
     Serial.print("temperature=");
     Serial.println((double)U_ccmList[CCMID_InAirTemp].value/10,1);
-    UECSclient.println("GET /api/data.php?temperature=");     //YOUR URL
+    UECSclient.print("GET /api/data.php?temperature=");     //YOUR URL
     UECSclient.print((double)U_ccmList[CCMID_InAirTemp].value/10, 1);
 
     Serial.print("humidity=");
