@@ -85,7 +85,14 @@ boolean datasend() {
     Serial.print("&HD_Priority=");
     Serial.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_PRIO]);
     UECSclient.print("&HD_Priority=");
-    UECSclient.println(U_ccmList[CCMID_InAirHD].baseAttribute[AT_PRIO]);
+    UECSclient.print(U_ccmList[CCMID_InAirHD].baseAttribute[AT_PRIO]);
+
+    
+    int showValueStatusData = ChangeThermostat();
+    Serial.print("&Controller_thermostat=");
+    Serial.println(showValueStatusData);
+    UECSclient.print("&Controller_thermostat=");
+    UECSclient.println(showValueStatusData);
 
     
     UECSclient.print(" ");      //SPACE BEFORE HTTP/1.1
