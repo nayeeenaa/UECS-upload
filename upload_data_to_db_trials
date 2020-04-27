@@ -88,7 +88,7 @@ boolean datasend() {
     UECSclient.print(U_ccmList[CCMID_InAirHD].baseAttribute[AT_PRIO]);
 
     
-    int showValueStatusData = ChangeThermostat();
+    bool showValueStatusData = ChangeThermostat();
     Serial.print("&Controller_thermostat=");
     Serial.println(showValueStatusData);
     UECSclient.print("&Controller_thermostat=");
