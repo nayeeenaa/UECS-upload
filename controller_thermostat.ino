@@ -1,4 +1,4 @@
-int ChangeThermostat(){
+boolean ChangeThermostat(){
   signed long showValueTemp;
   signed long setONOFFAUTO;
   signed long setONTempFromWeb;
